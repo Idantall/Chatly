@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 10, 10, 10;
+  }
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-y: none; /* מניעת גלילת יתר בגלויות */
+  position: relative;
+}
+
+/* סגנונות לתמיכה בכיווני שפה */
+.rtl-layout {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr-layout {
+  direction: ltr;
+  text-align: left;
+}
+
+/* יישור טפסים ותיבות קלט */
+.rtl-layout input, 
+.rtl-layout textarea {
+  text-align: right;
+}
+
+.ltr-layout input, 
+.ltr-layout textarea {
+  text-align: left;
+}
+
+/* מניעת ריצוד בזמן מעבר בין שפות */
+html, body {
+  transition: none !important;
+}
+
+/* מניעת רענונים אוטומטיים של העמוד */
+html, body {
+  scroll-snap-type: none;
+}
+
+/* תיקונים למצב RTL */
+.rtl-layout .space-x-4:not(.rtl\:space-x-reverse) > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1 !important;
+}
+
+/* וידוא שכיוון ה-flex נשאר עקבי */
+.rtl-layout .flex {
+  flex-direction: row;
+}
+
+/* תיקוני רווחים מיוחדים */
+.space-x-4.rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* תיקון מיקום אלמנטים מוחלטים */
+html[dir="rtl"] .absolute.right-4 {
+  right: auto;
+  left: 1rem;
+}
+
+html[dir="rtl"] .absolute.left-4 {
+  left: auto;
+  right: 1rem;
+}
+
+/* תיקון מראה של תפריטים */
+html[dir="rtl"] .dropdown-menu {
+  right: 0;
+  left: auto;
+} 
